@@ -241,17 +241,17 @@ public:
     _signature &= ~(kSignatureRegElementFlagMask | kSignatureRegElementIndexMask);
   }
 
-  inline constexpr bool isVecB8() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecD>::kSignature | kSignatureElementB); }
-  inline constexpr bool isVecH4() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecD>::kSignature | kSignatureElementH); }
-  inline constexpr bool isVecS2() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecD>::kSignature | kSignatureElementS); }
-  inline constexpr bool isVecD1() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecD>::kSignature); }
+  inline constexpr bool isVecB8() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == ((static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecD>::kSignature) | static_cast<std::uint32_t>(kSignatureElementB))); }
+  inline constexpr bool isVecH4() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == ((static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecD>::kSignature) | static_cast<std::uint32_t>(kSignatureElementH))); }
+  inline constexpr bool isVecS2() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == ((static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecD>::kSignature) | static_cast<std::uint32_t>(kSignatureElementS))); }
+  inline constexpr bool isVecD1() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (RegTraits<RegType::kARM_VecD>::kSignature); }
 
-  inline constexpr bool isVecB16() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecV>::kSignature | kSignatureElementB); }
-  inline constexpr bool isVecH8() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecV>::kSignature | kSignatureElementH); }
-  inline constexpr bool isVecS4() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecV>::kSignature | kSignatureElementS); }
-  inline constexpr bool isVecD2() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecV>::kSignature | kSignatureElementD); }
-  inline constexpr bool isVecB4x4() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecV>::kSignature | kSignatureElementB4); }
-  inline constexpr bool isVecH2x4() const noexcept { return _signature.subset(kBaseSignatureMask | kSignatureRegElementTypeMask) == (RegTraits<RegType::kARM_VecV>::kSignature | kSignatureElementH2); }
+  inline constexpr bool isVecB16() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecV>::kSignature) | static_cast<std::uint32_t>(kSignatureElementB)); }
+  inline constexpr bool isVecH8() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecV>::kSignature) | static_cast<std::uint32_t>(kSignatureElementH)); }
+  inline constexpr bool isVecS4() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecV>::kSignature) | static_cast<std::uint32_t>(kSignatureElementS)); }
+  inline constexpr bool isVecD2() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecV>::kSignature) | static_cast<std::uint32_t>(kSignatureElementD)); }
+  inline constexpr bool isVecB4x4() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecV>::kSignature) | static_cast<std::uint32_t>(kSignatureElementB4)); }
+  inline constexpr bool isVecH2x4() const noexcept { return _signature.subset(static_cast<std::uint32_t>(kBaseSignatureMask) | static_cast<std::uint32_t>(kSignatureRegElementTypeMask)) == (static_cast<std::uint32_t>(RegTraits<RegType::kARM_VecV>::kSignature) | static_cast<std::uint32_t>(kSignatureElementH2)); }
 
   //! Creates a cloned register with element access.
   inline Vec at(uint32_t elementIndex) const noexcept {

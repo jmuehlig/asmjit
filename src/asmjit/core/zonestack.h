@@ -62,7 +62,7 @@ public:
     inline void setEnd(T* end) noexcept { _end = (void*)end; }
 
     template<typename T>
-    inline T* data() const noexcept { return (T*)((uint8_t*)(this) + sizeof(Block)); }
+    inline T* data() const noexcept { return const_cast<T*>((const T*)((const uint8_t*)(this) + sizeof(Block))); }
 
     template<typename T>
     inline bool canPrepend() const noexcept { return _start > data<void>(); }
